@@ -1,0 +1,37 @@
+---
+title: "SVM"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+```{r}
+data(mtcars)
+head(mtcars)
+```
+```{r}
+x <- subset(mtcars, select = c(drat, wt))
+x
+```
+
+```{r}
+y <- subset(mtcars, select = c(am))
+y
+```
+
+
+```{r}
+myData <- data.frame(x,y)
+head(myData)
+```
+
+```{r}
+colnames(myData) <- c("rasioPorosBelakang", "beratMobil", "transmisi")
+head(myData)
+```
+
+```{r}
+plot(myData$rasioPorosBelakang,myData$beratMobil, col = ifelse(y=="1", "blue", "red"), pch = 19)
+```
+

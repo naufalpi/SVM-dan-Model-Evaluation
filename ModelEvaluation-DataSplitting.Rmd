@@ -1,0 +1,35 @@
+---
+title: "Model Evaluation-Data Splitting"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+```{r}
+myData <- read.csv(file="hsbdemo2.txt", header = TRUE)
+myData
+```
+```{r}
+nrow(myData)
+```
+```{r}
+library(caret)
+```
+
+```{r}
+set.seed(1)
+
+#splitting data into training and test sets
+trainIndex <- createDataPartition(myData$X, p = 0.6)$Resample1
+
+trainingSet <- myData[trainIndex, ]
+testingSet <- myData[-trainIndex, ]
+
+trainingSet
+```
+
+```{r}
+testingSet
+```
+

@@ -1,0 +1,22 @@
+---
+title: "Model Evaluation-Cross Validation"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+```{r}
+myData <- read.csv(file="hsbdemo2.txt", header = TRUE)
+summary(myData)
+```
+```{r}
+library(caret)
+train_control <- trainControl(method="cv", number=10)
+
+modelNB <- train(prog ~ ses + female, method = "nb", trControl = train_control, data = myData)
+
+modelNB$resample
+confusionMatrix(modelNB)
+```
+
